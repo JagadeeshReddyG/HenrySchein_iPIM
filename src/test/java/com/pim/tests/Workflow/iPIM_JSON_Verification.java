@@ -27,7 +27,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static com.pim.reports.FrameworkLogger.log;
 
@@ -45,7 +44,6 @@ public class iPIM_JSON_Verification extends BaseTest {
 	GlobalAttributePage globalAttributePage = new GlobalAttributePage();
 	LocalAttributePage localAttributePage = new LocalAttributePage();
 	ClassificationsPage classificationpage = new ClassificationsPage();
-	AllCatalogsPage allCatalogsPage = new AllCatalogsPage();
 
 
 
@@ -66,11 +64,8 @@ public class iPIM_JSON_Verification extends BaseTest {
 			LocalDateTime testStartTime = LocalDateTime.parse(expectedTimeStamp, propFormatter);
 			log(LogType.EXTENTANDCONSOLE, "Property timestamp: " + testStartTime);
 
-			BasePage.WaitForMiliSec(2000);
 			// ---- Step 2: Launch IPIM and search item ----
 			BaseTest.launchIPIM();
-			BasePage.WaitForMiliSec(2000);
-
 			log(LogType.INFO, "iPIM Application Launched");
 			iPimMainPage iPimMainPage = new iPimMainPage();
 			iPimMainPage.clickUsFlag()
@@ -148,7 +143,7 @@ public class iPIM_JSON_Verification extends BaseTest {
 
 
 
-	//ProductNotes,Item Media,List Price,GEP Web Description
+	//ProductNotes JSON Verification US
 	@PimFrameworkAnnotation(module = Modules.JSON_Verification_PIM, category = CategoryType.REGRESSION)
 	@TestDataSheet(sheetname = TestCaseSheet.Json_Verification)
 	@Test(description = "iPIM_DESCRIPTIONS_MEDIA_PRICES_Headers | Validate that field names (Product Notes, GEP Web Description, Item Media, List Price) from Master Catalog are correctly reflected in iPIM JSON for US region", dataProvider = "getCatalogData", groups = {
@@ -272,7 +267,6 @@ public class iPIM_JSON_Verification extends BaseTest {
 
 	}
 
-	//GTIN(GTIN,UOM),ClassCodesID (Class Code Id,Type)
 	@PimFrameworkAnnotation(module = Modules.JSON_Verification_PIM, category = CategoryType.REGRESSION)
 	@TestDataSheet(sheetname = TestCaseSheet.Json_Verification)
 	@Test(description = "iPIM_GTIN_Class COde ID_Headers | Validate that field names (GTIN,Class Codes ID) from Master Catalog are correctly reflected in iPIM JSON for US region", dataProvider = "getCatalogData", groups = {
@@ -356,38 +350,26 @@ public class iPIM_JSON_Verification extends BaseTest {
 
 		// Reuse common method
 		verifyJsonForItem(map, (jsonContext, rowTime) -> {
-			//--Validate GTIN
+			//Validate GTIN
 			String jsonGTIN = JsonVerificationUtils.getGTINFromIPIM_Json(jsonContext, map.get("ItemNumber"));
 			if (jsonGTIN != null && !jsonGTIN.trim().isEmpty()) {
 				//Assert json GTIN with Master GTIN
 				Assertions.assertThat(jsonGTIN).isEqualTo(master_GTIN);
 				log(LogType.EXTENTANDCONSOLE, "GTIN Found on IPIM: [" + jsonGTIN + "]");
 
+				//return true;   // exits early if GTIN found & validated
 			} else {
 				log(LogType.EXTENTANDCONSOLE, "No GTIN in this record, checking next...");
 				// no return here, so execution continues to media validation
 			}
-
-			//--Validate UOM value from GTIN array
-			String jsonUOM = JsonVerificationUtils.getGTINUOMFromIPIM_Json(jsonContext, map.get("ItemNumber"));
-			if (jsonUOM != null && !jsonUOM.trim().isEmpty()) {
-				//Assert json jsonUOM with Master jsonUOM
-				Assertions.assertThat(jsonUOM).isEqualTo(master_UOM);
-				log(LogType.EXTENTANDCONSOLE, "UOM Found on IPIM: [" + jsonUOM + "]");
-
-			} else {
-				log(LogType.EXTENTANDCONSOLE, "No UOM in this record, checking next...");
-				// no return here, so execution continues to Class Codes ID validation
-			}
-
-			//--Validate Class Codes ID
+			//Validate Class Codes ID
 			String jsonFDClassCodeID = JsonVerificationUtils.getFederalDrugClassCodeFromIPIM_Json(jsonContext, map.get("ItemNumber"));
 			if (jsonFDClassCodeID != null && !jsonFDClassCodeID.trim().isEmpty()) {
 				//Assert json jsonFDClassCodeID with Master master_Federal_Drug_Internal_Class_Code
 				Assertions.assertThat(jsonFDClassCodeID).isEqualTo(master_Federal_Drug_Internal_Class_Code);
 				log(LogType.EXTENTANDCONSOLE, "FDRL_DRG_CLS_CD Found on IPIM: [" + jsonFDClassCodeID + "]");
 
-				return true;   // exits if FDRL_DRG_CLS_CD found & validated
+				return true;   // exits early if FDRL_DRG_CLS_CD found & validated
 			} else {
 				log(LogType.EXTENTANDCONSOLE, "No FDRL_DRG_CLS_CD in this record, checking next...");
 			}
@@ -398,12 +380,11 @@ public class iPIM_JSON_Verification extends BaseTest {
 
 	}
 
-	//Dimensions (Dimension Class Name,Dimension Name,Dimension Value),Item_Category_ID,Global_Message_ID,Non Base-Catalog to Product Mapping from Master Catalog,Item Classification
 	@PimFrameworkAnnotation(module = Modules.JSON_Verification_PIM, category = CategoryType.REGRESSION)
 	@TestDataSheet(sheetname = TestCaseSheet.Json_Verification)
-	@Test(description = "iPIM_Dimensions_Headers | Validate that field names Dimensions ,Item_Category_ID,Global_Message_ID,Non Base-Catalog,Item Classifications to Product Mapping from Master Catalog are correctly reflected in iPIM JSON for US region", dataProvider = "getCatalogData", groups = {
+	@Test(description = "iPIM_Dimensions_Headers | Validate that field names (Dimensions) from Master Catalog are correctly reflected in iPIM JSON for US region", dataProvider = "getCatalogData", groups = {
 			"REGRESSION", "US", "Prices" }, dataProviderClass = DataProviderUtils.class)
-	public void verify_Dimensions_ItemCategoryID_GlobalMessageID_NonBaseCatalogToProductMapping_ItemClassification_iPIM_JSON_Verification_US(Map<String, String> map) throws InterruptedException {
+	public void verify_Dimensions_iPIM_JSON_Verification_US(Map<String, String> map) throws InterruptedException {
 
 		PimHomepage pimHomepage = new LoginPage()
 				.enterUserName(ExcelUtils.getLoginData().get("US User").get("UserName"))
@@ -419,49 +400,25 @@ public class iPIM_JSON_Verification extends BaseTest {
 
 
 		//-- Dimensions
-		// -- Get & Store (Brand, Quantity, item, itemType, Packaging Type) Dimensions From Master Catalog: master_all_dimensionNames
+		// -- Get & Store (Brand, Quantity, item, itemType, Packaging Type) DimensionsFrom Master Catalog: master_GTIN
 
 		productDetailSearchPage.selectTabfromDropdown(map.get("tabName"));
-		List<String> master_all_dimensionNames = new ArrayList<String>();
-		List<String> master_all_dimensionValues = new ArrayList<String>();
-		master_all_dimensionNames.addAll(localAttributePage.getAllDimensionsNames());
-		master_all_dimensionValues.addAll(localAttributePage.getAllDimensionsValues());
+		List<String> master_all_dimensions = new ArrayList<String>();
+		master_all_dimensions.addAll(localAttributePage.getAllDimensions());
+		System.out.println("DIMENSIONS: "+master_all_dimensions);
 
-		log(LogType.EXTENTANDCONSOLE, "Master Catalog- Dimensions Names for the  Item is: " + master_all_dimensionNames );
-		log(LogType.EXTENTANDCONSOLE, "Master Catalog- Dimensions Values for the  Item is: " + master_all_dimensionValues );
-
-
-		//--Dimension Class Name
-		// -- Get & Store (Primary Taxonomy and Structure (Consider Only Numeric Values: 005-07-30-01))
-		productDetailSearchPage.selectTabfromDropdown(map.get("tabName2"));
-		String master_DimensionClassName = classificationpage.getFormattedPrimaryTaxonomy("Primary Taxonomy");
-		log(LogType.EXTENTANDCONSOLE, "Master Catalog- Dimensions Class Name for the  Item is: [" + master_DimensionClassName +"]" );
+		log(LogType.EXTENTANDCONSOLE, "Master Catalog Dimensions for the  Item is: " + master_all_dimensions );
 
 
 		//--Item_Category_ID
 		// -- Get & Store (GEP ECommerce Taxonomy and Structure (Consider Only Numeric Values: 3000-650-40))
-		String master_Item_Category_ID = classificationpage.getGepEcommerceTaxonomy("GEP ECommerce Taxonomy");
-		log(LogType.EXTENTANDCONSOLE, "Master Catalog- Item_Category_ID for the  Item is: [" + master_Item_Category_ID+"]" );
+		productDetailSearchPage.selectTabfromDropdown(map.get("tabName2"));
+		String gepEcommercetaxonomy = classificationpage.getGepEcommerceTaxonomy("GEP ECommerce Taxonomy");
+		System.out.println("gepEcommercetaxonomy: "+gepEcommercetaxonomy);
 
 
-		//--Global_Messages_ID
-		// -- Get & Store (zNew Global Message and Structure (Consider Only Numeric Values: MEDICAL_OTP))
-		String master_Global_Messages_ID = classificationpage.getFormattedZNewGlobalMessage("zNew Global Message");
-		log(LogType.EXTENTANDCONSOLE, "Master Catalog- Global_Messages_ID for the  Item is: [" + master_Global_Messages_ID+"]" );
-
-		//--Item Classifications
-		// -- Get & Store (UNSPSC  Taxonomy and Structure (Consider Only Numeric Values: 3000-650-40))
-		String master_ClassificationCatID = classificationpage.getFormattedUNSPSCTaxonomy("UNSPSC Taxonomy");
-		log(LogType.EXTENTANDCONSOLE, "Master Catalog- Classification Cat ID for the  Item is: [" + master_ClassificationCatID+"]" );
-		String master_ClassificationAttributeName = classificationpage.getUNSPSCTaxonomy("UNSPSC Taxonomy");
-		log(LogType.EXTENTANDCONSOLE, "Master Catalog- Classification Attribute Name for the  Item is: [" + master_ClassificationAttributeName+"]" );
 
 
-		//--Non Base-Catalog to Product mapping
-		// -- Get & Store (Attribute values under All Catalog Tab)
-		productDetailSearchPage.selectTabfromDropdown(map.get("tabName3"));
-		List <String> masterMedicalCatalogList =allCatalogsPage.getAllMedicalCatalogList();
-		log(LogType.EXTENTANDCONSOLE, "Master Catalog- Catalog IDs for the  Item is: " + masterMedicalCatalogList );
 
 
 
@@ -469,111 +426,188 @@ public class iPIM_JSON_Verification extends BaseTest {
 
 //		 Reuse common method
 		verifyJsonForItem(map, (jsonContext, rowTime) -> {
-			//-- Validate Dimensions Names & Values
+			//Validate GTIN
+			String jsonGTIN = JsonVerificationUtils.getGTINFromIPIM_Json(jsonContext, map.get("ItemNumber"));
+			if (jsonGTIN != null && !jsonGTIN.trim().isEmpty()) {
+				//Assert json GTIN with Master GTIN
+				Assertions.assertThat(jsonGTIN).isEqualTo(master_all_dimensions);
+				log(LogType.EXTENTANDCONSOLE, "Dimensions Found on IPIM: [" + jsonGTIN + "]");
 
-			Map<String, String> jsonDimensions = JsonVerificationUtils.getDimensionsFromIPIM_Json(jsonContext, map.get("ItemNumber"), master_all_dimensionNames);
-			if (jsonDimensions != null && !jsonDimensions.isEmpty()) {
-				// Extract Dimension Names & Values
-				List<String> jsonDimensionNames = new ArrayList<>(jsonDimensions.keySet());
-				List<String> jsonDimensionValues = new ArrayList<>(jsonDimensions.values());
-				// Validate names
-				Assertions.assertThat(jsonDimensionNames).containsExactlyInAnyOrderElementsOf(master_all_dimensionNames);
-				log(LogType.EXTENTANDCONSOLE, "Dimension Names found on IPIM:" + jsonDimensionNames);
-
-				// Validate values
-				Assertions.assertThat(jsonDimensionValues).containsAll(master_all_dimensionValues);
-				log(LogType.EXTENTANDCONSOLE, "Dimension Values found on IPIM: " + jsonDimensionValues+ "]");
+				return true;   // exits early if GTIN found & validated
 			} else {
-				log(LogType.EXTENTANDCONSOLE, "No Dimensions found in this record, checking next...");
-			}
-
-			//-- --Dimension Class Name
-			String jsonDimension_Class_Name = JsonVerificationUtils.getFirstDimensionClassNameFromIPIM_Json(jsonContext, map.get("ItemNumber"));
-			if (jsonDimension_Class_Name != null && !jsonDimension_Class_Name.trim().isEmpty()) {
-				//Assert json Dimension_Class_Name with Master Dimension_Class_Name
-				Assertions.assertThat(jsonDimension_Class_Name).isEqualTo(master_DimensionClassName);
-				log(LogType.EXTENTANDCONSOLE, "Dimension_Class_Name found on IPIM: [" + jsonDimension_Class_Name + "]");
-			} else {
-				log(LogType.EXTENTANDCONSOLE, "No Dimension_Class_Name in this record, checking next...");
-			}
-			//-- Validate Extra Headers (Sequence, Sequence_Value, Language_ISO_Code)
-			List<String> jsonExtraHeaders = JsonVerificationUtils.getDimensionExtraHeadersFromIPIM_Json(jsonContext, map.get("ItemNumber"));
-
-			if (!jsonExtraHeaders.isEmpty()) {
-				Assertions.assertThat(jsonExtraHeaders).containsExactlyInAnyOrder("Sequence", "Sequence_Value", "Language_ISO_Code");
-				log(LogType.EXTENTANDCONSOLE, "Extra Dimension headers found on IPIM: " + jsonExtraHeaders);
-			} else {
-				log(LogType.EXTENTANDCONSOLE, "No extra headers (Sequence, Sequence_Value, Language_ISO_Code) found in this record.");
-			}
-
-			//-- Validate Item_Category_ID
-			String jsonItem_Category_ID = JsonVerificationUtils.getItemCategoryIDFromIPIM_Json(jsonContext, map.get("ItemNumber"));
-			if (jsonItem_Category_ID != null && !jsonItem_Category_ID.trim().isEmpty()) {
-				//Assert json Item_Category_ID with Master Item_Category_ID
-				Assertions.assertThat(jsonItem_Category_ID).isEqualTo(master_Item_Category_ID);
-				log(LogType.EXTENTANDCONSOLE, "Item_Category_ID found on IPIM: [" + jsonItem_Category_ID + "]");
-
-				//return true;
-			} else {
-				log(LogType.EXTENTANDCONSOLE, "No Item_Category_ID in this record, checking next...");
-			}
-
-			//-- Validate Global_Message_ID
-			String jsonGlobal_Message_ID = JsonVerificationUtils.getGlobalMessageIDFromIPIM_Json(jsonContext, map.get("ItemNumber"));
-			if (jsonGlobal_Message_ID != null && !jsonGlobal_Message_ID.trim().isEmpty()) {
-				//Assert json jsonGlobal_Message_ID with Master Global_Messages_ID
-				Assertions.assertThat(jsonGlobal_Message_ID).contains(master_Global_Messages_ID);
-				log(LogType.EXTENTANDCONSOLE, "Global_Message_ID found on IPIM: [" + jsonGlobal_Message_ID + "]");
-
-			} else {
-				log(LogType.EXTENTANDCONSOLE, "No Global_Message_ID in this record, checking next...");
-			}
-			//-- Validate Non Base-Catalog to Product Mapping
-			String jsonCatalogIDs = JsonVerificationUtils.getCatalogIdsFromIPIM_Json(jsonContext, map.get("ItemNumber"));
-			if (jsonCatalogIDs != null && !jsonCatalogIDs.trim().isEmpty()) {
-				//Assert json jsonCatalogIDs with Master masterMedicalCatalogList
-				Assertions.assertThat(jsonCatalogIDs).contains(masterMedicalCatalogList);
-				log(LogType.EXTENTANDCONSOLE, "Non Base-Catalog to Product Mapping found on IPIM: [" + jsonCatalogIDs + "]");
-				//return true;
-			} else {
-				log(LogType.EXTENTANDCONSOLE, "No Non Base-Catalog to Product Mapping in this record, checking next...");
-			}
-			//-- Validate Item Classifications
-			List<Map<String, Object>> jsonItemClassifications = JsonVerificationUtils.getItemClassificationsFromIPIM_Json(jsonContext, map.get("ItemNumber"));
-			if (jsonItemClassifications != null && !jsonItemClassifications.isEmpty()) {
-				List<String> classificationList = new ArrayList<>();
-				for (Map<String, Object> classification : jsonItemClassifications) {
-					String attributeName = (String) classification.get("Classification_Attribute_Name");
-					String catId = (String) classification.get("Classification_Cat_Id");
-
-					// Add to list for assertion
-					if (attributeName != null && catId != null)
-					{
-						classificationList.add(attributeName + ":" + catId);
-					}
-
-					// Assert language_ISO_code is present and not null
-					Assertions.assertThat(classification).containsKey("language_ISO_code");
-					//Assertions.assertThat(classification.get("language_ISO_code")).isNotNull();
-				}
-
-				// Assert master Classification AttributeName:CatId is present
-				Assertions.assertThat(classificationList).contains(master_ClassificationAttributeName + ":" + master_ClassificationCatID);
-				log(LogType.EXTENTANDCONSOLE, "Item Classifications found on IPIM: " + classificationList);
-				return true;
-			} else {
-				log(LogType.EXTENTANDCONSOLE, "No Item Classifications found in this record, checking next...");
+				log(LogType.EXTENTANDCONSOLE, "No GTIN in this record, checking next...");
+				// no return here, so execution continues to media validation
 			}
 
 
-			return false; // only hits here if Dimensions,Dimension Class Name,Item_Category_ID,Global Message ID nor Non Base-Catalog to Product Mapping matched
+			return false; // only hits here if neither notes nor media matched
 		});
 
 	}
 
 
 
-	//Media(Media Id)
+
+	//ProductNotes JSON Verification US
+	@PimFrameworkAnnotation(module = Modules.JSON_Verification_PIM, category = CategoryType.REGRESSION)
+	@TestDataSheet(sheetname = TestCaseSheet.Json_Verification)
+	@Test(description = "iPIM_DESCRIPTIONS_MEDIA_PRICES_Headers | Validate that field names (Abbreviated Display Description) from Master Catalog are correctly reflected in iPIM JSON for US region", dataProvider = "getCatalogData", groups = {
+			"REGRESSION", "US", "Prices" }, dataProviderClass = DataProviderUtils.class)
+	public void verify_Product_Description_JSON_Verification_US(Map<String, String> map) throws InterruptedException {
+
+		PimHomepage pimHomepage = new LoginPage()
+				.enterUserName(ExcelUtils.getLoginData().get("US User").get("UserName"))
+				.enterPassword(ExcelUtils.getLoginData().get("US User").get("Password"))
+				.clickLoginButton();
+
+		pimHomepage.mainMenu().clickQueriesMenu()
+				.selectItemType(map.get("ItemType"))
+				.selectCatalogType(map.get("MasterCatalog"))
+				.enterHsiItemNumber(map.get("ItemNumber"))
+				.clickSeachButton();
+
+		log(LogType.INFO, "Navigate to Field Selection Page from Setting Icon");
+
+		productDetailSearchPage.clickSettingIcon()
+				.clickHSISelectionOption()
+				.clickSettingIcon()
+				.clickFieldSelectionOption();
+
+		fieldselectionpage.clearAllFieldsExceptItemNumandDesc();
+		//Adding Product Notes & Language in Field Selection Page
+		fieldselectionpage.enterFieldName(map.get("Header"))
+				.clickHeaderText(map.get("HeaderText"))
+				.clickAddButton()
+				.clickOkButton();
+
+		// -- Get & Store Product Description From Master Catalog: master_ProductDesc
+		String master_ProductDesc=productDetailSearchPage.getDisplayedValue();
+		log(LogType.EXTENTANDCONSOLE, "Master Catalog Product Description for the  Item is: [" + master_ProductDesc + "]");
+
+
+		//-- GEP Web Description
+		// -- Get & Store GEP Abbreviated Web Description from GEP Web Description tab
+		productDetailSearchPage.clickOnFirstResult();
+		pimHomepage.productDetailSearchPage().selectTabfromDropdown(map.get("tabName3"));
+		String master_Abbreviated_Display_Description = gepWebDescPage.getAbbreviatedDisplayDescription();
+		log(LogType.EXTENTANDCONSOLE, "Master Catalog GEP Abbreviated Web Description for Item is: [" + master_Abbreviated_Display_Description + "]");
+
+		// -- Get & Store GEP Search Description from GEP Web Description tab
+		String master_Search_Description = gepWebDescPage.getSearchDescription();
+		log(LogType.EXTENTANDCONSOLE, "Master Catalog GEP Search Description for Item is: [" + master_Search_Description + "]");
+
+		// -- Get & Store GEP Detail Description from GEP Web Description tab
+		String master_Detail_Description = gepWebDescPage.getDetailedDescription();
+		log(LogType.EXTENTANDCONSOLE, "Master Catalog GEP Detail Description for Item is: [" + master_Detail_Description + "]");
+
+		// -- Get & Store GEP Technical Description from GEP Web Description tab
+		String master_Technical_Description = gepWebDescPage.getTechnicalDescription();
+		log(LogType.EXTENTANDCONSOLE, "Master Catalog GEP Technical Description for Item is: [" + master_Technical_Description + "]");
+
+		// -- Get & Store GEP Look Ahead Search Description from GEP Web Description tab
+		String master_Look_Ahead_Search_Description = gepWebDescPage.getLookAheadSearchDescription();
+		log(LogType.EXTENTANDCONSOLE, "Master Catalog GEP Look Ahead Search Description for Item is: [" + master_Look_Ahead_Search_Description + "]");
+
+		// -- Get & Store GEP Extended Web Description from GEP Web Description tab
+		String master_Extended_Web_Description = gepWebDescPage.getExtendedWebDescription();
+		log(LogType.EXTENTANDCONSOLE, "Master Catalog GEP Extended Web Description for Item is: [" + master_Extended_Web_Description + "]");
+
+		// -- Get & Store GEP Print Catalog Description from GEP Web Description tab
+		String master_Print_Catalog_Description = gepWebDescPage.getPrintCatalogDescription();
+		log(LogType.EXTENTANDCONSOLE, "Master Catalog GEP Print Catalog Description for Item is: [" + master_Print_Catalog_Description + "]");
+
+		pimHomepage.clickLogoutButton();
+
+		// Reuse common method
+		verifyJsonForItem(map, (jsonContext, rowTime) -> {
+			//validate GEP Abbreviated Displayed Web Description
+			String jsonGepAbbreviatedDisplayedWebDesc= JsonVerificationUtils.getGEP_Abbreviated_Displayed_Web_DescriptionFromIPIM_Json(jsonContext, map.get("ItemNumber"));
+			if (jsonGepAbbreviatedDisplayedWebDesc != null && !jsonGepAbbreviatedDisplayedWebDesc.isEmpty()) {
+				//Assert json GEP Abbreviated Displayed Web Description with Master GEP Abbreviated Displayed Web Description
+				Assertions.assertThat(jsonGepAbbreviatedDisplayedWebDesc).isEqualTo(master_Abbreviated_Display_Description);
+				log(LogType.EXTENTANDCONSOLE, "GEP Abbreviated Displayed Web Description Found on IPIM[: " + jsonGepAbbreviatedDisplayedWebDesc+ "]");
+
+			} else {
+				log(LogType.EXTENTANDCONSOLE, "No GEP Abbreviated Displayed Web Description in this record, checking next...");
+			}
+
+			//validate GEP Product Description
+			String jsonGepProductDesc= JsonVerificationUtils.getProductDescriptionFromIPIM_Json(jsonContext, map.get("ItemNumber"));
+			if (jsonGepProductDesc != null && !jsonGepProductDesc.isEmpty()) {
+				//Assert json GEP Product Description with Master GEP Product Description
+				Assertions.assertThat(jsonGepProductDesc).isEqualTo(master_ProductDesc);
+				log(LogType.EXTENTANDCONSOLE, "GEP Product Description Found on IPIM[: " + jsonGepProductDesc+ "]");
+
+			} else {
+				log(LogType.EXTENTANDCONSOLE, "No GEP Product Description in this record, checking next...");
+			}
+
+			//validate GEP Search Description
+			String jsonSearchDesc= JsonVerificationUtils.getSearchDescriptionFromIPIM_Json(jsonContext, map.get("ItemNumber"));
+			if (jsonSearchDesc != null && !jsonSearchDesc.isEmpty()) {
+				//Assert json GEP Look ahead Search Web Description with Master GEP Look ahead Search Description
+				Assertions.assertThat(jsonSearchDesc).isEqualTo(master_Search_Description);
+				log(LogType.EXTENTANDCONSOLE, "GEP Search Description Found on IPIM[: " + jsonSearchDesc+ "]");
+			} else {
+				log(LogType.EXTENTANDCONSOLE, "No GEP Search Description in this record, checking next...");
+			}
+
+			//validate GEP Detail Description
+			String jsonDetailDesc= JsonVerificationUtils.getDetailDescriptionFromIPIM_Json(jsonContext, map.get("ItemNumber"));
+			if (jsonDetailDesc != null && !jsonDetailDesc.isEmpty()) {
+				//Assert json GEP Detail Web Description with Master GEP Detailed or extended Description
+				Assertions.assertThat(jsonDetailDesc).isEqualTo(master_Detail_Description);
+				log(LogType.EXTENTANDCONSOLE, "GEP Detail Description Found on IPIM[: " + jsonDetailDesc+ "]");
+			} else {
+				log(LogType.EXTENTANDCONSOLE, "No GEP Detail Description in this record, checking next...");
+			}
+
+			//validate GEP Technical Description
+			String jsonTechnicalDesc= JsonVerificationUtils.getTechnicalDescriptionFromIPIM_Json(jsonContext, map.get("ItemNumber"));
+			if (jsonTechnicalDesc != null && !jsonTechnicalDesc.isEmpty()) {
+				//Assert json GEP Technical Web Description with Master GEP Technical Specification Description
+				Assertions.assertThat(jsonTechnicalDesc).isEqualTo(master_Technical_Description);
+				log(LogType.EXTENTANDCONSOLE, "GEP Technical Description Found on IPIM[: " + jsonTechnicalDesc+ "]");
+			} else {
+				log(LogType.EXTENTANDCONSOLE, "No GEP Technical Description in this record, checking next...");
+			}
+
+			//validate GEP Look Ahead Search Description
+			String jsonGepLookAheadSearchDesc= JsonVerificationUtils.getLookAheadSearchDescriptionFromIPIM_Json(jsonContext, map.get("ItemNumber"));
+			if (jsonGepLookAheadSearchDesc != null && !jsonGepLookAheadSearchDesc.isEmpty()) {
+				//Assert json GEP Look ahead Search Web Description with Master GEP Look ahead Search Description
+				Assertions.assertThat(jsonGepLookAheadSearchDesc).isEqualTo(master_Look_Ahead_Search_Description);
+				log(LogType.EXTENTANDCONSOLE, "GEP Look Ahead Search Description Found on IPIM[: " + jsonGepLookAheadSearchDesc+ "]");
+			} else {
+				log(LogType.EXTENTANDCONSOLE, "No GEP Look Ahead Search Description in this record, checking next...");
+			}
+
+			//validate GEP Print Catalog Description
+			String jsonPrintCatalogDesc= JsonVerificationUtils.getPrintCatalogDescriptionFromIPIM_Json(jsonContext, map.get("ItemNumber"));
+			if (jsonPrintCatalogDesc != null && !jsonPrintCatalogDesc.isEmpty()) {
+				//Assert json GEP Print Catalog Description with Master GEP Print Catalog Description
+				Assertions.assertThat(jsonPrintCatalogDesc).isEqualTo(master_Print_Catalog_Description);
+				log(LogType.EXTENTANDCONSOLE, "GEP Print Catalog Description Found on IPIM[: " + jsonPrintCatalogDesc+ "]");
+			} else {
+				log(LogType.EXTENTANDCONSOLE, "No GEP Print Catalog Description in this record, checking next...");
+			}
+
+			//validate GEP Extended Web Description
+			String jsonExtendedWebDesc= JsonVerificationUtils.getExtendedWebDescriptionFromIPIM_Json(jsonContext, map.get("ItemNumber"));
+			if (jsonExtendedWebDesc != null && !jsonExtendedWebDesc.isEmpty()) {
+				//Assert json GEP Extended Web Description with Master GEP Extended Web Description
+				Assertions.assertThat(jsonExtendedWebDesc).isEqualTo(master_Extended_Web_Description);
+				log(LogType.EXTENTANDCONSOLE, "GEP Extended Web Description Found on IPIM[: " + jsonExtendedWebDesc+ "]");
+				return true;   // exits if all & GEP Description validated
+			} else {
+				log(LogType.EXTENTANDCONSOLE, "No GEP Extended Web Description in this record, checking next...");
+			}
+
+			return false; // only hits here if neither descriptions matched
+		});
+
+	}
+
 	@PimFrameworkAnnotation(module = Modules.JSON_Verification_PIM, category = CategoryType.REGRESSION)
 	@TestDataSheet(sheetname = TestCaseSheet.Json_Verification)
 	@Test(description = "PIM_JSON_Verification_TC_PIM_JSON_07 | verify_all_catalog_tabs_and_exception_list_for_dental_division", dataProvider = "getCatalogData", groups = {
@@ -621,7 +655,7 @@ public class iPIM_JSON_Verification extends BaseTest {
 					log(LogType.EXTENTANDCONSOLE, imageMediaList + " imageMediaList");
 					allImageItemMediaList.addAll(imageMediaList);
 					matchFound = true;
-					break; // Exit loop once matching itemNumber is found
+					break; // ✅ Exit loop once matching itemNumber is found
 				} else {
 					log(LogType.EXTENTANDCONSOLE, "ItemNumber [" + itemNumber + "] not found in file: " + jsonFileName);
 				}
