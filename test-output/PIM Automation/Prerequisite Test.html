@@ -1,0 +1,612 @@
+<html>
+<head>
+<title>TestNG:  Prerequisite Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Prerequisite Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>2/7/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Jun 16 02:12:07 EDT 2025</td>
+</tr>
+<tr><td>Total time:</td><td>1644 seconds (1644739 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.pim.tests.catalogtests.DentalCatalogTest.verify_rule_driven_for_dental_division()'><b>verify_rule_driven_for_dental_division</b><br>Test class: com.pim.tests.catalogtests.DentalCatalogTest<br>Test method: CATR_077, CATR_078, CATR_079, CATR_080, CATR_081, CATR_013 | Verifying Rule Driven catalog for Dental Division in US Master Catalog<br>Parameters: {Status=OK, ItemStatus=Active, userDriven=DENTAL, RuleDriven=XDENTAL, ItemType=Items in US Catalog, AllCatalogtab=All Catalogs, Qualitystatustab=Quality status, TestCaseName=verify_rule_driven_for_dental_division, specialMarketCatalog=N/A, MasterCatalog=Master catalog, ReferenceType=None, CatalogType=US Catalog, ItemNumber=1000006, Qualitystatus=Catalog Rules, CatalogEntityRule=Global_Item_Message,Owner_Publish_Date_Change_Rule,Substitute_Exception_Rule,SubstitutionRule_Dental,SubstitutionRule_Medical,SubstitutionRule_SM,SubstitutionRule_Zahn,Consolidated_WebCatalog_Assignment_Dental,Consolidated_WebCatalog_Assignment_Medical,Consolidated_WebCatalog_Assignment_SM,Consolidated_WebCatalog_Assignment_Zahn,Divisional_Exception_Rule,Catalog_Copy_Rule,Assign_RuleDrivenCatalog_Dental,Assign_RuleDrivencatalog_Medical,Assign_RuleDrivencatalog_Zahn,Divisional_Item_Rule, Remarks=N/A, medicalCatalog=N/A, TabName=Dental Catalog, PublishFlag=N/A, ReferenceTab=None}</td>
+<td><div><pre>java.lang.AssertionError: 
+Expecting ArrayList:
+  []
+to contain:
+  [&quot;Global_Item_Message&quot;]
+but could not find the following element(s):
+  [&quot;Global_Item_Message&quot;]
+
+	at com.pim.tests.catalogtests.DentalCatalogTest.verify_rule_driven_for_dental_division(DentalCatalogTest.java:86)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1582)
+... Removed 10 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1521287005", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1521287005'><pre>java.lang.AssertionError: 
+Expecting ArrayList:
+  []
+to contain:
+  [&quot;Global_Item_Message&quot;]
+but could not find the following element(s):
+  [&quot;Global_Item_Message&quot;]
+
+	at com.pim.tests.catalogtests.DentalCatalogTest.verify_rule_driven_for_dental_division(DentalCatalogTest.java:86)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1582)
+</pre></div></td>
+<td>588</td>
+<td>com.pim.tests.catalogtests.DentalCatalogTest@2ade1650</td></tr>
+<tr>
+<td title='com.pim.tests.localAttribute.LocalAttributeTest.verify_localAttribute_changes_For_SpecialMarketItem_updated_In_RespectiveTable_Item()'><b>verify_localAttribute_changes_For_SpecialMarketItem_updated_In_RespectiveTable_Item</b><br>Test class: com.pim.tests.localAttribute.LocalAttributeTest<br>Test method: MDLW_025 | Verify local attribute changes for a SpecialMarket item updated in respective table when the items local attribute are modified in PIM  pre-requisite<br>Parameters: {itemNumber=2532611, LocalAttributeLaunguageField=NA, QualityTab_StatusColoum=NA, ItemType=Items in US Catalog, LocalAttributeQuantityFieldValue=NA, TestCaseName=verify_localAttribute_changes_For_SpecialMarketItem_updated_In_RespectiveTable_Item, ContinueTabName=NA, productName=NA, LocalAttributeItemFieldValueWithNoContent=No content, LocalAttributeitemTypeFieldValue=10 Lead, UserDriven=NA, QualityTab_StatusColoumPass=NA, itemStatus=Active, LocalAttributeRulePass=NA, saveButton=Save, Password=MSD-Technology, LocalAttributeBrandFieldValueWithNoContent=No content, LocalAttributeitemTypeFieldValueWithNoContent=No content, MasterCatalog=Master catalog, CatalogType=US Catalog, LocalAttributeBrandFieldValue=1600 Protector, Username=kathir.ranga, LocalAttributeItemFieldValue=Adapter Cable, TabName=Local Attribute, ContinueCatalogType=NA, LocalAttributeRule=NA}</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;] (tried for 60 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at com.pim.factories.ExplicitWaitFactory.performExplicitWait(ExplicitWaitFactory.java:29)
+	at com.pim.pages.BasePage.sendKeys(BasePage.java:62)
+	at com.pim.pages.LocalAttributePage.brandFieldAttribute(LocalAttributePage.java:330)
+	at com.pim.tests.localAttribute.LocalAttributeTest.verify_localAttribute_changes_For_SpecialMarketItem_updated_In_RespectiveTable_Item(LocalAttributeTest.java:614)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1582)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;]&quot;}
+  (Session info: chrome=137.0.7151.104)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;USNYMEQA7&apos;, ip: &apos;10.80.78.48&apos;, os.name: &apos;Windows Server 2019&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\NISHIK~1.KUM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53978}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: b9a168f10def2fe9571e3b340b7e81c2
+*** Element info: {Using=xpath, value=//span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	... 17 more
+... Removed 13 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1972184431", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1972184431'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;] (tried for 60 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at com.pim.factories.ExplicitWaitFactory.performExplicitWait(ExplicitWaitFactory.java:29)
+	at com.pim.pages.BasePage.sendKeys(BasePage.java:62)
+	at com.pim.pages.LocalAttributePage.brandFieldAttribute(LocalAttributePage.java:330)
+	at com.pim.tests.localAttribute.LocalAttributeTest.verify_localAttribute_changes_For_SpecialMarketItem_updated_In_RespectiveTable_Item(LocalAttributeTest.java:614)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1582)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;]&quot;}
+  (Session info: chrome=137.0.7151.104)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;USNYMEQA7&apos;, ip: &apos;10.80.78.48&apos;, os.name: &apos;Windows Server 2019&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\NISHIK~1.KUM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53978}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: b9a168f10def2fe9571e3b340b7e81c2
+*** Element info: {Using=xpath, value=//span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;]}
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	... 17 more
+</pre></div></td>
+<td>262</td>
+<td>com.pim.tests.localAttribute.LocalAttributeTest@e87e9a9c</td></tr>
+<tr>
+<td title='com.pim.tests.localAttribute.LocalAttributeTest.verify_localAttribute_changes_For_Medical_Item_updated_In_RespectiveTable()'><b>verify_localAttribute_changes_For_Medical_Item_updated_In_RespectiveTable</b><br>Test class: com.pim.tests.localAttribute.LocalAttributeTest<br>Test method: MDLW_024 | Verify local attribute changes for a Medical item updated in respective table when the items local attribute are modified in PIM pre-requisite<br>Parameters: {itemNumber=1238000, LocalAttributeLaunguageField=NA, QualityTab_StatusColoum=NA, ItemType=Items in US Catalog, LocalAttributeQuantityFieldValue=NA, TestCaseName=verify_localAttribute_changes_For_Medical_Item_updated_In_RespectiveTable, ContinueTabName=NA, productName=NA, LocalAttributeItemFieldValueWithNoContent=No content, LocalAttributeitemTypeFieldValue=4-Meta Universal, UserDriven=NA, QualityTab_StatusColoumPass=NA, itemStatus=Active, LocalAttributeRulePass=NA, saveButton=Save, Password=MSD-Technology, LocalAttributeBrandFieldValueWithNoContent=No content, LocalAttributeitemTypeFieldValueWithNoContent=No content, MasterCatalog=Master catalog, CatalogType=US Catalog, LocalAttributeBrandFieldValue=20/20, Username=kathir.ranga, LocalAttributeItemFieldValue=Accessories Pack, TabName=Local Attribute, ContinueCatalogType=NA, LocalAttributeRule=NA}</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;] (tried for 60 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at com.pim.factories.ExplicitWaitFactory.performExplicitWait(ExplicitWaitFactory.java:29)
+	at com.pim.pages.BasePage.sendKeys(BasePage.java:62)
+	at com.pim.pages.LocalAttributePage.brandFieldAttribute(LocalAttributePage.java:330)
+	at com.pim.tests.localAttribute.LocalAttributeTest.verify_localAttribute_changes_For_Medical_Item_updated_In_RespectiveTable(LocalAttributeTest.java:574)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1582)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;]&quot;}
+  (Session info: chrome=137.0.7151.104)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;USNYMEQA7&apos;, ip: &apos;10.80.78.48&apos;, os.name: &apos;Windows Server 2019&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\NISHIK~1.KUM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53976}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0c4aa264c9dc861bde3d4610a1980aad
+*** Element info: {Using=xpath, value=//span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	... 17 more
+... Removed 13 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace-1131213173", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace-1131213173'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;] (tried for 60 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at com.pim.factories.ExplicitWaitFactory.performExplicitWait(ExplicitWaitFactory.java:29)
+	at com.pim.pages.BasePage.sendKeys(BasePage.java:62)
+	at com.pim.pages.LocalAttributePage.brandFieldAttribute(LocalAttributePage.java:330)
+	at com.pim.tests.localAttribute.LocalAttributeTest.verify_localAttribute_changes_For_Medical_Item_updated_In_RespectiveTable(LocalAttributeTest.java:574)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1582)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;]&quot;}
+  (Session info: chrome=137.0.7151.104)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;USNYMEQA7&apos;, ip: &apos;10.80.78.48&apos;, os.name: &apos;Windows Server 2019&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\NISHIK~1.KUM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53976}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0c4aa264c9dc861bde3d4610a1980aad
+*** Element info: {Using=xpath, value=//span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;]}
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	... 17 more
+</pre></div></td>
+<td>263</td>
+<td>com.pim.tests.localAttribute.LocalAttributeTest@e87e9a9c</td></tr>
+<tr>
+<td title='com.pim.tests.webDescriptionTests.GEP_WebDescriptionTest.updationOfGEPWebDescriptionAfterUpdationOfLocalAttributeParameterForUS()'><b>updationOfGEPWebDescriptionAfterUpdationOfLocalAttributeParameterForUS</b><br>Test class: com.pim.tests.webDescriptionTests.GEP_WebDescriptionTest<br>Test method: WRFL_110 US | Verify if below GEP Web Description fields are editable, GEP Full Display Description, GEP Abbreviated Display Description, GEP Look Ahead Search Description, GEP Detailed or Extended Description<br>Parameters: {Status=OK, itemNumber=1127276, QualityStatusRule=Dental_Local_AttrMandatory_Check, LANamesList=NA, Item1=Alloy, Item2=Amalgam, ItemType=Items in US Catalog, TabNameGEP=GEP Web Description, CatalogTypeMaster=Master catalog, TestCaseRefNo.=MDM-758-006 (US) WRFL_110, TestCaseName=updationOfGEPWebDescriptionAfterUpdationOfLocalAttributeParameterForUS, TabNameQS=Quality status, CatalogType=US Catalog, TabNameGA=NA, TabNameLA=Local Attribute, Item3=Mercury, Save=Save}</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //span[normalize-space()=&apos;Item:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-filterselect-button&apos;] (tried for 60 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at com.pim.factories.ExplicitWaitFactory.performExplicitWait(ExplicitWaitFactory.java:23)
+	at com.pim.pages.BasePage.click(BasePage.java:48)
+	at com.pim.pages.LocalAttributePage.itemFieldAttributeChange(LocalAttributePage.java:457)
+	at com.pim.tests.webDescriptionTests.GEP_WebDescriptionTest.updationOfGEPWebDescriptionAfterUpdationOfLocalAttributeParameterForUS(GEP_WebDescriptionTest.java:107)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1582)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[normalize-space()=&apos;Item:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-filterselect-button&apos;]&quot;}
+  (Session info: chrome=137.0.7151.104)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;USNYMEQA7&apos;, ip: &apos;10.80.78.48&apos;, os.name: &apos;Windows Server 2019&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\NISHIK~1.KUM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54361}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 761be5e8a93a6c9d5d4f285c8b659e01
+*** Element info: {Using=xpath, value=//span[normalize-space()=&apos;Item:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-filterselect-button&apos;]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:638)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	... 17 more
+... Removed 13 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace186124544", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace186124544'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //span[normalize-space()=&apos;Item:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-filterselect-button&apos;] (tried for 60 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at com.pim.factories.ExplicitWaitFactory.performExplicitWait(ExplicitWaitFactory.java:23)
+	at com.pim.pages.BasePage.click(BasePage.java:48)
+	at com.pim.pages.LocalAttributePage.itemFieldAttributeChange(LocalAttributePage.java:457)
+	at com.pim.tests.webDescriptionTests.GEP_WebDescriptionTest.updationOfGEPWebDescriptionAfterUpdationOfLocalAttributeParameterForUS(GEP_WebDescriptionTest.java:107)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1582)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[normalize-space()=&apos;Item:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-filterselect-button&apos;]&quot;}
+  (Session info: chrome=137.0.7151.104)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;USNYMEQA7&apos;, ip: &apos;10.80.78.48&apos;, os.name: &apos;Windows Server 2019&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\NISHIK~1.KUM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54361}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 761be5e8a93a6c9d5d4f285c8b659e01
+*** Element info: {Using=xpath, value=//span[normalize-space()=&apos;Item:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-filterselect-button&apos;]}
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:638)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	... 17 more
+</pre></div></td>
+<td>183</td>
+<td>com.pim.tests.webDescriptionTests.GEP_WebDescriptionTest@3340fa86</td></tr>
+<tr>
+<td title='com.pim.tests.localAttribute.LocalAttributeTest.verify_localAttribute_changes_For_ZahnItem_updated_In_RespectiveTable()'><b>verify_localAttribute_changes_For_ZahnItem_updated_In_RespectiveTable</b><br>Test class: com.pim.tests.localAttribute.LocalAttributeTest<br>Test method: MDLW_026 | Verify local attribute changes for a Zahn item updated in respective table For Item when the items local attribute are modified in PIM pre-requisite<br>Parameters: {itemNumber=1010956, LocalAttributeLaunguageField=NA, QualityTab_StatusColoum=NA, ItemType=Items in US Catalog, LocalAttributeQuantityFieldValue=NA, TestCaseName=verify_localAttribute_changes_For_ZahnItem_updated_In_RespectiveTable, ContinueTabName=NA, productName=NA, LocalAttributeItemFieldValueWithNoContent=No content, LocalAttributeitemTypeFieldValue=#4, UserDriven=NA, QualityTab_StatusColoumPass=NA, itemStatus=Active, LocalAttributeRulePass=NA, saveButton=Save, Password=MSD-Technology, LocalAttributeBrandFieldValueWithNoContent=No content, LocalAttributeitemTypeFieldValueWithNoContent=No content, MasterCatalog=Master catalog, CatalogType=US Catalog, LocalAttributeBrandFieldValue=ADS, Username=kathir.ranga, LocalAttributeItemFieldValue=Acrylic, TabName=Local Attribute, ContinueCatalogType=NA, LocalAttributeRule=NA}</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;] (tried for 60 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at com.pim.factories.ExplicitWaitFactory.performExplicitWait(ExplicitWaitFactory.java:29)
+	at com.pim.pages.BasePage.sendKeys(BasePage.java:62)
+	at com.pim.pages.LocalAttributePage.brandFieldAttribute(LocalAttributePage.java:330)
+	at com.pim.tests.localAttribute.LocalAttributeTest.verify_localAttribute_changes_For_ZahnItem_updated_In_RespectiveTable(LocalAttributeTest.java:648)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1582)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;]&quot;}
+  (Session info: chrome=137.0.7151.104)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;USNYMEQA7&apos;, ip: &apos;10.80.78.48&apos;, os.name: &apos;Windows Server 2019&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\NISHIK~1.KUM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54245}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 52447375213e427247213b7715841a43
+*** Element info: {Using=xpath, value=//span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	... 17 more
+... Removed 13 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1790795828", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1790795828'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;] (tried for 60 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at com.pim.factories.ExplicitWaitFactory.performExplicitWait(ExplicitWaitFactory.java:29)
+	at com.pim.pages.BasePage.sendKeys(BasePage.java:62)
+	at com.pim.pages.LocalAttributePage.brandFieldAttribute(LocalAttributePage.java:330)
+	at com.pim.tests.localAttribute.LocalAttributeTest.verify_localAttribute_changes_For_ZahnItem_updated_In_RespectiveTable(LocalAttributeTest.java:648)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1582)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;]&quot;}
+  (Session info: chrome=137.0.7151.104)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;USNYMEQA7&apos;, ip: &apos;10.80.78.48&apos;, os.name: &apos;Windows Server 2019&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\NISHIK~1.KUM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54245}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 52447375213e427247213b7715841a43
+*** Element info: {Using=xpath, value=//span[normalize-space()=&apos;Brand:&apos;]/ancestor::tr/td[3]//div[@class=&apos;v-label v-widget v-has-width&apos;]}
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	... 17 more
+</pre></div></td>
+<td>202</td>
+<td>com.pim.tests.localAttribute.LocalAttributeTest@e87e9a9c</td></tr>
+<tr>
+<td title='com.pim.tests.catalogtests.DentalCatalogTest.verify_rule_driven_for_dental_division()'><b>verify_rule_driven_for_dental_division</b><br>Test class: com.pim.tests.catalogtests.DentalCatalogTest<br>Test method: CATR_077, CATR_078, CATR_079, CATR_080, CATR_081, CATR_013 | Verifying Rule Driven catalog for Dental Division in US Master Catalog<br>Parameters: {Status=OK, ItemStatus=Active, userDriven=DENTAL,NSIC, RuleDriven=DEN_FSC, ItemType=Items in US Catalog, AllCatalogtab=All Catalogs, Qualitystatustab=Quality status, TestCaseName=verify_rule_driven_for_dental_division, specialMarketCatalog=N/A, MasterCatalog=Master catalog, ReferenceType=None, CatalogType=US Catalog, ItemNumber=1000024, Qualitystatus=Catalog Rules, CatalogEntityRule=Global_Item_Message,Owner_Publish_Date_Change_Rule,Substitute_Exception_Rule,SubstitutionRule_Dental,SubstitutionRule_Medical,SubstitutionRule_SM,SubstitutionRule_Zahn,Consolidated_WebCatalog_Assignment_Dental,Consolidated_WebCatalog_Assignment_Medical,Consolidated_WebCatalog_Assignment_SM,Consolidated_WebCatalog_Assignment_Zahn,Divisional_Exception_Rule,Catalog_Copy_Rule,Assign_RuleDrivenCatalog_Dental,Assign_RuleDrivencatalog_Medical,Assign_RuleDrivencatalog_Zahn,Divisional_Item_Rule, Remarks=N/A, medicalCatalog=N/A, TabName=Dental Catalog, PublishFlag=N/A, ReferenceTab=None}</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //td[@class=&apos;gwt-MenuItem gwt-MenuItem-selected&apos;] (tried for 60 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at com.pim.factories.ExplicitWaitFactory.performExplicitWait(ExplicitWaitFactory.java:23)
+	at com.pim.pages.BasePage.click(BasePage.java:48)
+	at com.pim.pages.CatalogTypePage.selectUserDriven(CatalogTypePage.java:101)
+	at com.pim.tests.catalogtests.DentalCatalogTest.verify_rule_driven_for_dental_division(DentalCatalogTest.java:76)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1582)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//td[@class=&apos;gwt-MenuItem gwt-MenuItem-selected&apos;]&quot;}
+  (Session info: chrome=137.0.7151.104)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;USNYMEQA7&apos;, ip: &apos;10.80.78.48&apos;, os.name: &apos;Windows Server 2019&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\NISHIK~1.KUM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55033}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: eb31e358bcda89829cbdebf61384cea1
+*** Element info: {Using=xpath, value=//td[@class=&apos;gwt-MenuItem gwt-MenuItem-selected&apos;]}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:638)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	... 17 more
+... Removed 13 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace508986332", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace508986332'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //td[@class=&apos;gwt-MenuItem gwt-MenuItem-selected&apos;] (tried for 60 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at com.pim.factories.ExplicitWaitFactory.performExplicitWait(ExplicitWaitFactory.java:23)
+	at com.pim.pages.BasePage.click(BasePage.java:48)
+	at com.pim.pages.CatalogTypePage.selectUserDriven(CatalogTypePage.java:101)
+	at com.pim.tests.catalogtests.DentalCatalogTest.verify_rule_driven_for_dental_division(DentalCatalogTest.java:76)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1582)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//td[@class=&apos;gwt-MenuItem gwt-MenuItem-selected&apos;]&quot;}
+  (Session info: chrome=137.0.7151.104)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;USNYMEQA7&apos;, ip: &apos;10.80.78.48&apos;, os.name: &apos;Windows Server 2019&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 137.0.7151.104, chrome: {chromedriverVersion: 136.0.7103.113 (76fa3c17824..., userDataDir: C:\Users\NISHIK~1.KUM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55033}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: eb31e358bcda89829cbdebf61384cea1
+*** Element info: {Using=xpath, value=//td[@class=&apos;gwt-MenuItem gwt-MenuItem-selected&apos;]}
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:641)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:638)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	... 17 more
+</pre></div></td>
+<td>172</td>
+<td>com.pim.tests.catalogtests.DentalCatalogTest@2ade1650</td></tr>
+<tr>
+<td title='com.pim.tests.catalogtests.DentalCatalogTest.verify_rule_driven_for_dental_division()'><b>verify_rule_driven_for_dental_division</b><br>Test class: com.pim.tests.catalogtests.DentalCatalogTest<br>Test method: CATR_077, CATR_078, CATR_079, CATR_080, CATR_081, CATR_013 | Verifying Rule Driven catalog for Dental Division in US Master Catalog<br>Parameters: {Status=OK, ItemStatus=Active, userDriven=NSIC, RuleDriven=XDENTAL, ItemType=Items in US Catalog, AllCatalogtab=All Catalogs, Qualitystatustab=Quality status, TestCaseName=verify_rule_driven_for_dental_division, specialMarketCatalog=N/A, MasterCatalog=Master catalog, ReferenceType=None, CatalogType=US Catalog, ItemNumber=1000011, Qualitystatus=Catalog Rules, CatalogEntityRule=Global_Item_Message,Owner_Publish_Date_Change_Rule,Substitute_Exception_Rule,SubstitutionRule_Dental,SubstitutionRule_Medical,SubstitutionRule_SM,SubstitutionRule_Zahn,Consolidated_WebCatalog_Assignment_Dental,Consolidated_WebCatalog_Assignment_Medical,Consolidated_WebCatalog_Assignment_SM,Consolidated_WebCatalog_Assignment_Zahn,Divisional_Exception_Rule,Catalog_Copy_Rule,Assign_RuleDrivenCatalog_Dental,Assign_RuleDrivencatalog_Medical,Assign_RuleDrivencatalog_Zahn,Divisional_Item_Rule, Remarks=N/A, medicalCatalog=N/A, TabName=Dental Catalog, PublishFlag=N/A, ReferenceTab=None}</td>
+<td><div><pre>java.lang.AssertionError: 
+Expecting ArrayList:
+  []
+to contain:
+  [&quot;Global_Item_Message&quot;]
+but could not find the following element(s):
+  [&quot;Global_Item_Message&quot;]
+
+	at com.pim.tests.catalogtests.DentalCatalogTest.verify_rule_driven_for_dental_division(DentalCatalogTest.java:86)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1582)
+... Removed 10 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1402723559", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1402723559'><pre>java.lang.AssertionError: 
+Expecting ArrayList:
+  []
+to contain:
+  [&quot;Global_Item_Message&quot;]
+but could not find the following element(s):
+  [&quot;Global_Item_Message&quot;]
+
+	at com.pim.tests.catalogtests.DentalCatalogTest.verify_rule_driven_for_dental_division(DentalCatalogTest.java:86)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:586)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1582)
+</pre></div></td>
+<td>592</td>
+<td>com.pim.tests.catalogtests.DentalCatalogTest@2ade1650</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.pim.tests.catalogtests.DentalCatalogTest.verify_all_catalog_tabs_and_exception_list_for_dental_division()'><b>verify_all_catalog_tabs_and_exception_list_for_dental_division</b><br>Test class: com.pim.tests.catalogtests.DentalCatalogTest<br>Test method: CATR_179 and CATR_180, CATR_132 | Verify All catalog tabs and exception lists for Dental Catalog list populates the catalogs with User, Rule Driven and excluding the Catalogs selected as Exception  For US<br>Parameters: {Status=OK, ItemStatus=Active, userDriven=DENTAL, RuleDriven=XDENTAL, ItemType=Items in US Catalog, AllCatalogtab=All Catalogs, Qualitystatustab=Quality status, TestCaseName=verify_all_catalog_tabs_and_exception_list_for_dental_division, specialMarketCatalog=N/A, MasterCatalog=Master catalog, ReferenceType=None, CatalogType=US Catalog, ItemNumber=1000011, Qualitystatus=Catalog Rules, CatalogEntityRule=Assign_RuleDrivenCatalog_Dental,Assign_RuleDrivencatalog_Medical,Assign_RuleDrivencatalog_Zahn,Catalog_Copy_Rule, Remarks=N/A, medicalCatalog=N/A, TabName=Dental Catalog, PublishFlag=N/A, ReferenceTab=None}</td>
+<td></td>
+<td>217</td>
+<td>com.pim.tests.catalogtests.DentalCatalogTest@2ade1650</td></tr>
+<tr>
+<td title='com.pim.tests.localAttribute.LocalAttributeTest.verify_localAttribute_changes_For_DentalItem_updated_In_RespectiveTable()'><b>verify_localAttribute_changes_For_DentalItem_updated_In_RespectiveTable</b><br>Test class: com.pim.tests.localAttribute.LocalAttributeTest<br>Test method: MDLW_023 | Verify local attribute changes for a Dental item updated in respective table when the items local attribute are modified in PIM --Pre-Requisite <br>Parameters: {itemNumber=2900095, LocalAttributeLaunguageField=NA, QualityTab_StatusColoum=NA, ItemType=Items in US Catalog, LocalAttributeQuantityFieldValue=NA, TestCaseName=verify_localAttribute_changes_For_DentalItem_updated_In_RespectiveTable, ContinueTabName=NA, productName=NA, LocalAttributeItemFieldValueWithNoContent=No content, LocalAttributeitemTypeFieldValue=1-Well, UserDriven=NA, QualityTab_StatusColoumPass=NA, itemStatus=Active, LocalAttributeRulePass=NA, saveButton=Save, Password=MSD-Technology, LocalAttributeBrandFieldValueWithNoContent=No content, LocalAttributeitemTypeFieldValueWithNoContent=No content, MasterCatalog=Master catalog, CatalogType=US Catalog, LocalAttributeBrandFieldValue=1.8 cubic feet, Username=kathir.ranga, LocalAttributeItemFieldValue=Acrylic, TabName=Local Attribute, ContinueCatalogType=NA, LocalAttributeRule=NA}</td>
+<td></td>
+<td>181</td>
+<td>com.pim.tests.localAttribute.LocalAttributeTest@e87e9a9c</td></tr>
+</table><p>
+</body>
+</html>

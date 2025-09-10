@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="PIM Automation" thread-count="3" parallel="methods">
+	<listeners>
+		<listener class-name="com.pim.listeners.ListenerClass"></listener>
+	</listeners>
+
+
+	<test name="Json Verification Regression Test Cases" parallel="methods" thread-count="3">
+		
+        <classes>
+			<class name="com.pim.tests.Workflow.iPIM_JSON_Verification">
+			<methods>
+<!--				<include name="verify_Product_Notes_JSON_Verification_US"></include>-->
+<!--				<include name="verify_GTINAndClassCodesID_In_IPIMJson_US"></include>-->
+				<include name="verify_Dimensions_ItemCategoryID_GlobalMessageID_NonBaseCatalogToProductMapping_ItemClassification_iPIM_JSON_Verification_US"></include>
+<!--				<include name="verify_items_media_files_US"></include>-->
+<!--				<include name="verify_Product_Notes_JSON_Verification_CA"></include>-->
+			</methods>
+			</class>
+        </classes>
+  </test>
+</suite>

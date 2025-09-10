@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="PIM Automation" thread-count="3" parallel="methods">
+	<listeners>
+		<listener class-name="com.pim.listeners.ListenerClass"></listener>
+	</listeners>
+
+	<test name="Prerequisite Test">
+		<classes>
+<!--			<class name="com.pim.tests.localAttribute.LocalAttributeTest">-->
+<!--				<methods>-->
+<!--					<include-->
+<!--						name="verify_localAttribute_changes_For_DentalItem_updated_In_RespectiveTable" />-->
+<!--					<include-->
+<!--						name="verify_localAttribute_changes_For_Medical_Item_updated_In_RespectiveTable" />-->
+<!--					<include-->
+<!--						name="verify_localAttribute_changes_For_SpecialMarketItem_updated_In_RespectiveTable_Item"></include>-->
+<!--					<include-->
+<!--						name="verify_localAttribute_changes_For_ZahnItem_updated_In_RespectiveTable"></include>-->
+<!--				</methods>-->
+<!--			</class>-->
+<!--			<class-->
+<!--				name="com.pim.tests.webDescriptionTests.GEP_WebDescriptionTest">-->
+<!--				<methods>-->
+<!--					<include-->
+<!--						name="updationOfGEPWebDescriptionAfterUpdationOfLocalAttributeParameterForUS"></include>-->
+<!--				</methods>-->
+<!--			</class>-->
+<!--			<class name="com.pim.tests.catalogtests.DentalCatalogTest">-->
+<!--				<methods>-->
+<!--					<include name="verify_rule_driven_for_dental_division"></include>-->
+<!--					<include-->
+<!--						name="verify_all_catalog_tabs_and_exception_list_for_dental_division"></include>-->
+<!--				</methods>-->
+<!--			</class>-->
+
+
+			<class name="com.pim.tests.JsonVerificationPreRequsite.JsonVerificationPreRequsite">
+				<methods>
+					<include name="verify_Product_Notes_JSON_Verification_US"/>
+<!--					<include name="verify_Product_Notes_JSON_Verification_CA"/>-->
+<!--					<include name="verify_items_media_files"></include>-->
+<!--					<include name="verify_List_Price_JSON_Verification_For_An_Item"></include>-->
+				</methods>
+			</class>
+
+
+		</classes>
+	</test>
+</suite>

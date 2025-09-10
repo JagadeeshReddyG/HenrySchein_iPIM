@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="3" parallel="methods" name="Failed suite [PIM Automation]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="com.pim.listeners.ListenerClass"/>
+  </listeners>
+  <test thread-count="3" parallel="methods" name="Prerequisite Test(failed)">
+    <classes>
+      <class name="com.pim.tests.webDescriptionTests.GEP_WebDescriptionTest">
+        <methods>
+          <include name="testTearDown"/>
+          <include name="suiteTearDown"/>
+          <include name="setUp"/>
+          <include name="setupSuite"/>
+          <include name="tearDown"/>
+          <include name="testSetUp"/>
+          <include name="updationOfGEPWebDescriptionAfterUpdationOfLocalAttributeParameterForUS" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.pim.tests.webDescriptionTests.GEP_WebDescriptionTest -->
+      <class name="com.pim.tests.localAttribute.LocalAttributeTest">
+        <methods>
+          <include name="testTearDown"/>
+          <include name="verify_localAttribute_changes_For_Medical_Item_updated_In_RespectiveTable" invocation-numbers="0"/>
+          <include name="suiteTearDown"/>
+          <include name="setupSuite"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="verify_localAttribute_changes_For_SpecialMarketItem_updated_In_RespectiveTable_Item" invocation-numbers="0"/>
+          <include name="testSetUp"/>
+          <include name="verify_localAttribute_changes_For_ZahnItem_updated_In_RespectiveTable" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.pim.tests.localAttribute.LocalAttributeTest -->
+      <class name="com.pim.tests.catalogtests.DentalCatalogTest">
+        <methods>
+          <include name="testTearDown"/>
+          <include name="suiteTearDown"/>
+          <include name="setUp"/>
+          <include name="setupSuite"/>
+          <include name="verify_rule_driven_for_dental_division" invocation-numbers="0 1 2"/>
+          <include name="tearDown"/>
+          <include name="testSetUp"/>
+        </methods>
+      </class> <!-- com.pim.tests.catalogtests.DentalCatalogTest -->
+    </classes>
+  </test> <!-- Prerequisite Test(failed) -->
+</suite> <!-- Failed suite [PIM Automation] -->
