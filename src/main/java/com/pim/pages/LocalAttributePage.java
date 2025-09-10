@@ -217,15 +217,6 @@ public class LocalAttributePage extends BasePage {
 	private final By localAttributeFields = By
 			.xpath("//div[@class=\"v-expand\"]/div[1]//tbody[1]//tr[contains(@class, 'v-formlayout')]/td[1]//span");
 
-	public final By quantityFieldValue = By.xpath("//span[normalize-space()='Quantity:']/ancestor::tr/td[3]//div[@class='v-label v-widget v-has-width']");
-	public final By itemFieldValueNew = By.xpath("//span[normalize-space()='Item:']/ancestor::tr/td[3]//div[@class='v-label v-widget v-has-width']");
-	public final By itemTypeFieldValueNew = By.xpath("//span[normalize-space()='Item Type:']/ancestor::tr/td[3]//div[@class='v-label v-widget v-has-width']");
-	public final By packagingTypeFieldValue = By.xpath("//span[normalize-space()='Packaging Type:']/ancestor::tr/td[3]//div[@class='v-label v-widget v-has-width']");
-
-
-
-
-
 	public boolean isLocalAttributeFieldVisible(String fieldname) {
 		By by = null;
 		try {
@@ -813,27 +804,16 @@ public class LocalAttributePage extends BasePage {
 	}
 
 
-	public List<String> getAllDimensionsNames() {
-		List<String> dimensionsNames = new ArrayList<>();
+	public List<String> getAllDimensions() {
+		List<String> dimensions = new ArrayList<>();
 
-		dimensionsNames.add(getTextValue(brand, WaitLogic.PRESENCE, "Brand").replace(":","").trim());
-		dimensionsNames.add(getTextValue(quantity, WaitLogic.PRESENCE, "Quantity").replace(":","").trim());
-		dimensionsNames.add(getTextValue(item, WaitLogic.PRESENCE, "Item").replace(":","").trim());
-		dimensionsNames.add(getTextValue(itemType, WaitLogic.PRESENCE, "Item Type").replace(":","").trim());
-		dimensionsNames.add(getTextValue(packaging, WaitLogic.PRESENCE, "Packaging Type").replace(":","").trim());
+		dimensions.add(getTextValue(brand, WaitLogic.PRESENCE, "Brand").replace(":","").trim());
+		dimensions.add(getTextValue(quantity, WaitLogic.PRESENCE, "Quantity").replace(":","").trim());
+		dimensions.add(getTextValue(item, WaitLogic.PRESENCE, "Item").replace(":","").trim());
+		dimensions.add(getTextValue(itemType, WaitLogic.PRESENCE, "Item Type").replace(":","").trim());
+		dimensions.add(getTextValue(packaging, WaitLogic.PRESENCE, "Packaging Type").replace(":","").trim());
 
-		return dimensionsNames;
-	}
-	public List<String> getAllDimensionsValues() {
-		List<String> dimensionsValues = new ArrayList<>();
-
-		dimensionsValues.add(getTextValue(brandFieldValue, WaitLogic.PRESENCE, "Brand Value").replace(":","").trim());
-		dimensionsValues.add(getTextValue(quantityFieldValue, WaitLogic.PRESENCE, "Quantity Value").replace(":","").trim());
-		dimensionsValues.add(getTextValue(itemFieldValueNew, WaitLogic.PRESENCE, "Item Value").replace(":","").trim());
-		dimensionsValues.add(getTextValue(itemTypeFieldValueNew, WaitLogic.PRESENCE, "Item Type Value").replace(":","").trim());
-		dimensionsValues.add(getTextValue(packagingTypeFieldValue, WaitLogic.PRESENCE, "Packaging Type Value"));
-
-		return dimensionsValues;
+		return dimensions;
 	}
 
 //	public String getAllDimensions() {

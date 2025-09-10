@@ -12,9 +12,11 @@
         <classes>
 			<class name="com.pim.tests.Workflow.iPIM_JSON_Verification">
 			<methods>
+
 <!--				<include name="verify_Product_Notes_JSON_Verification_US"></include>-->
+				<include name="verify_Product_Description_JSON_Verification_US"></include>
 <!--				<include name="verify_GTINAndClassCodesID_In_IPIMJson_US"></include>-->
-				<include name="verify_Dimensions_ItemCategoryID_GlobalMessageID_NonBaseCatalogToProductMapping_ItemClassification_iPIM_JSON_Verification_US"></include>
+<!--				<include name="verify_Dimensions_iPIM_JSON_Verification_US"></include>-->
 <!--				<include name="verify_items_media_files_US"></include>-->
 <!--				<include name="verify_Product_Notes_JSON_Verification_CA"></include>-->
 			</methods>

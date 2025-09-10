@@ -140,11 +140,7 @@ public class BasePage {
 	    return count;
 
 	}
-	protected List<WebElement> getElementsList(String xpath) {
-		List<WebElement> elements = DriverManager.getDriver().findElements(By.xpath(xpath));
-		log(LogType.EXTENTANDCONSOLE, elements.size() + " elements found for locator: " + xpath);
-		return elements;
-	}
+	
 	protected String getValuefromSelectClass(By by,  WaitLogic waitstrategy, String elementname) {
 		WebElement element = ExplicitWaitFactory.performExplicitWait(waitstrategy, by);
 		Select sel = new Select(element);
