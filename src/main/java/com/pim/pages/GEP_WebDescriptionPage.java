@@ -69,9 +69,6 @@ public class GEP_WebDescriptionPage extends BasePage {
 	private final By ewdTitle = By.xpath("//span[contains(text(),'Extended Web Description:')]");
 	public By ewdTextField = By.xpath("(//span[contains(text(),'Extended Web Description:')]/ancestor:: tr//td[@class='v-formlayout-contentcell']//div)[7]");
 
-	//Technical Specification Description:
-	public By tsdTextField = By.xpath("(//span[contains(text(),'Technical Specification Description')]/ancestor:: tr//td[@class='v-formlayout-contentcell']//div)[7]");
-
 	//print catalog description
 	private final By pcdTitle = By.xpath("//span[contains(text(),'Print Catalog Description:')]");
 	public By pcdTextField = By.xpath("(//span[contains(text(),'Print Catalog Description:')]/ancestor::tr//td[@class='v-formlayout-contentcell'] //div)[7]");
@@ -193,29 +190,17 @@ public class GEP_WebDescriptionPage extends BasePage {
 		return lookAheadSearchDescription.trim();
 	}
 
-	public String getPrintCatalogDescription() {
+	public String getStiboDescription() {
 		String catlogDescription = getStringValues(pcdTextField, WaitLogic.VISIBLE, "get Catalogdescription Value");
 		return catlogDescription.trim();
 	}
 
-	public String getExtendedWebDescription() {
-		String extendedWebDescription = getStringValues(ewdTextField, WaitLogic.VISIBLE, "get Extended Web Description Value");
-		return extendedWebDescription.trim();
-	}
+
 	public String getSearchDescription() {
 		String searchDescription = getStringValues(sdTextField, WaitLogic.VISIBLE, "get SearchDescription Value");
 		return searchDescription.trim();
 	}
 
-	public String getDetailedDescription() {
-		String detailedDescription = getStringValues(doedTextField, WaitLogic.VISIBLE, "get Detailed Description Value");
-		return detailedDescription.trim();
-	}
-
-	public String getTechnicalDescription() {
-		String technicalDescription = getStringValues(tsdTextField, WaitLogic.VISIBLE, "get Technical Description Value");
-		return technicalDescription.trim();
-	}
 
 	public GEP_WebDescriptionPage searchTaskByFilter(String taskName) {
 		click(taskLink, WaitLogic.PRESENCE, "password");

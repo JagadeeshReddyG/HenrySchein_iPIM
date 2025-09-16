@@ -140,7 +140,11 @@ public class BasePage {
 	    return count;
 
 	}
-	
+	protected List<WebElement> getElementsList(String xpath) {
+		List<WebElement> elements = DriverManager.getDriver().findElements(By.xpath(xpath));
+		log(LogType.EXTENTANDCONSOLE, elements.size() + " elements found for locator: " + xpath);
+		return elements;
+	}
 	protected String getValuefromSelectClass(By by,  WaitLogic waitstrategy, String elementname) {
 		WebElement element = ExplicitWaitFactory.performExplicitWait(waitstrategy, by);
 		Select sel = new Select(element);
@@ -233,9 +237,19 @@ public class BasePage {
 		select.perform();
 	}
 
+
 	protected void deleteSelected() {
 		Actions builder = new Actions(DriverManager.getDriver());
 		builder.sendKeys(Keys.DELETE).release().perform();
+	}
+	protected void clearWithDelete(WebElement element) {
+		Actions builder = new Actions(DriverManager.getDriver());
+		builder.click(element)
+				.keyDown(Keys.CONTROL)
+				.sendKeys("a")
+				.keyUp(Keys.CONTROL)
+				.sendKeys(Keys.DELETE)
+				.perform();
 	}
 
 	public void clickFirstResultDropDown() {

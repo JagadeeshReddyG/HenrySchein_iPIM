@@ -83,6 +83,7 @@ public class ProductDetailSearchPage extends BasePage {
     private final By OK = By.xpath("//span[contains(text(),'OK')]");
 	private final By hsiBtn = By.xpath("//span[text()='HSI']");
 	private final By productNoteFieldValue = By.xpath("//*[@id='article_table']/div[2]/div[1]/table/tbody/tr/td[3]/div");
+	private final By headerFieldValue = By.xpath("//*[@id='article_table']/div[2]/div[1]/table/tbody/tr/td[3]/div");
 
 
 	public ProductDetailSearchPage clickOnFirstResult() {
@@ -548,7 +549,7 @@ public class ProductDetailSearchPage extends BasePage {
 	}
 	public String getDisplayedValue() {
 		WaitForMiliSec(2000);
-		return getStringValues(productNoteFieldValue,WaitLogic.VISIBLE,"Displayed value");
+		return getStringValues(headerFieldValue,WaitLogic.VISIBLE,"Displayed value");
 	}
 
 }
