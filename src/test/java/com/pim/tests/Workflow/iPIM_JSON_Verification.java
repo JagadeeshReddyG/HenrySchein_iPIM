@@ -767,7 +767,7 @@ public class iPIM_JSON_Verification extends BaseTest {
 					log(LogType.EXTENTANDCONSOLE, imageMediaList + " imageMediaList");
 					allImageItemMediaList.addAll(imageMediaList);
 					matchFound = true;
-					break; // ✅ Exit loop once matching itemNumber is found
+					break; //
 				} else {
 					log(LogType.EXTENTANDCONSOLE, "ItemNumber [" + itemNumber + "] not found in file: " + jsonFileName);
 				}
