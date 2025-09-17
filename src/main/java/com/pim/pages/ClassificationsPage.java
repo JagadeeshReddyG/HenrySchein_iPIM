@@ -38,15 +38,14 @@ public class ClassificationsPage extends BasePage {
 	private final String itemList = "//div[@class=\"v-scrollable v-table-body-wrapper v-table-body\"]//tbody//td[2]/div[contains(text(),'${variable}')]";
 	private final By openExpandButtonXpath =By.cssSelector(".v-button-hpmw-expand-all-button>span");
 	private final By closeExpandButtonXpath=By.xpath("//span[@class='v-button-wrap']");
-	public final String UNSPSC_Code = "(//td[@class='v-table-cell-content']//div[contains(text(),'UNSPSC Taxonomy')])";
+	public By UNSPSC_Code = By.xpath("(//td[@class='v-table-cell-content']//div[contains(text(),'UNSPSC Taxonomy')])");
     public By PrimaryTaxonomy = By.xpath("//div[text()='Primary Taxonomy']");
 	public By EcommerceTaxonomy = By.xpath("//div[text()='Zahn E-Commerce Taxonomy']");
 	private final String permissionRequiredErrorMessage = "//div[contains(text(),'${variable}')]";
 	private final By permissionRequiredCancelButton=By.xpath("//span[contains(text(),'Cancel')]");
 	private final String gepEcommerceTaxonomypath = "//tr//div[contains(text(),'${variable}')]/ancestor::td/following-sibling::td//div";
-	private final String zNewGlobalTaxonomypath = "//tr//div[contains(text(),'${variable}')]/ancestor::td/following-sibling::td//div";
 
-	private final String unspscTaxonomypath = "//tr//div[contains(text(),'${variable}')]/ancestor::td/following-sibling::td//div";
+
 
 	public boolean verifyItemErrorMessageforAllDivisions(String taxonomyName,String errorOrWarning,String divisionName,String errorOrWarningMessage) 
 	{
@@ -218,38 +217,7 @@ public class ClassificationsPage extends BasePage {
 	public String getGepEcommerceTaxonomy(String gepEcommerce){
 		String text = getStringValues(getElementByReplaceText(gepEcommerceTaxonomypath, gepEcommerce),WaitLogic.VISIBLE,"get GEP ecommerce taxonomy");
 		String gepecommercetaxonomy = ApplicationUtils.getFormattedTaxonomyId(text);
-		return gepecommercetaxonomy; // 3000-650-40 for (Item Category ID)
-	}
-
-	public String getFormattedPrimaryTaxonomy(String primaryEcommerce){
-		String text = getStringValues(getElementByReplaceText(primaryTaxonomypath, primaryEcommerce),WaitLogic.VISIBLE,"get Primary Taxonomy");
-		String primaryTaxanomy = ApplicationUtils.getFormattedTaxonomyId(text);
-		return primaryTaxanomy; //005-07-30-01 for (Dimension Class Name)
-	}
-//	public String getFormattedZNewGlobalMessage(String gepEcommerce){
-//		String text = getStringValues(getElementByReplaceText(gepEcommerceTaxonomypath, gepEcommerce),WaitLogic.VISIBLE,"get zNew Global Message");
-//		String gepecommercetaxonomy = ApplicationUtils.getFormattedTaxonomyId(text);
-//		return gepecommercetaxonomy;
-//	}
-//	public String getFormattedZNewGlobalMessage(String zNewGlobalMessage) {
-//		String text = getStringValues(getElementByReplaceText(zNewGlobalTaxonomypath, zNewGlobalMessage),WaitLogic.VISIBLE, "get zNew Global Message");
-//		return ApplicationUtils.getFormattedGlobalMessageId(text); //MEDICAL_OTP for(Global Messages ID)
-//	}
-	public String getFormattedZNewGlobalMessage(String zNewGlobalMessage) {
-		String text = getStringValues(getElementByReplaceText(zNewGlobalTaxonomypath, zNewGlobalMessage),WaitLogic.VISIBLE, "get zNew Global Message");
-		return ApplicationUtils.getFormattedGlobalMessageId(text); //MEDICAL_OTP for(Global Messages ID)
-	}
-
-	public String getFormattedUNSPSCTaxonomy(String UNSPSCTaxonomy){
-		String text = getStringValues(getElementByReplaceText(unspscTaxonomypath, UNSPSCTaxonomy),WaitLogic.VISIBLE,"get UNSPSC Taxonomy");
-		String uNSPSCTaxonomyFormatted = ApplicationUtils.getFormattedTaxonomyId(text);
-		return uNSPSCTaxonomyFormatted; // 3000-650-40 for (Item Category ID)
-	}
-
-	public String getUNSPSCTaxonomy(String UNSPSCTaxonomy){
-		String uNSPSCTaxonomy = getStringValues(getElementByReplaceText(UNSPSC_Code, UNSPSCTaxonomy),WaitLogic.VISIBLE,"get UNSPSC Taxonomy");
-		//String uNSPSCTaxonomy = ApplicationUtils.getFormattedTaxonomyId(text);
-		return uNSPSCTaxonomy; // 3000-650-40 for (Item Category ID)
+		return gepecommercetaxonomy;
 	}
 
 
