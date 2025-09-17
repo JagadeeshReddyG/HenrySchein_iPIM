@@ -26,7 +26,7 @@ public class ProductDetailSearchPage extends BasePage {
 	private final By dropdownbuttonfortab = By.xpath(
 			"//button[@class='v-nativebutton v-widget hpmw-tab-navigation-menubar v-nativebutton-hpmw-tab-navigation-menubar']");
 	private final By tabnameSearchTextbox = By.xpath("//div[@class='v-slot v-slot-hpmw-tab-search-input']//input");
-	private final String tabSearchxpath = "//span[normalize-space()='${variable}']";
+	private final String tabSearchxpath = "//div[@role='tree']//span[normalize-space()='${variable}']";
 	private final By filterIcon = By
 			.xpath("//span[@class='v-menubar-menuitem v-menubar-menuitem-hpmw-search v-menubar-menuitem-unchecked']");
 
@@ -83,7 +83,6 @@ public class ProductDetailSearchPage extends BasePage {
     private final By OK = By.xpath("//span[contains(text(),'OK')]");
 	private final By hsiBtn = By.xpath("//span[text()='HSI']");
 	private final By productNoteFieldValue = By.xpath("//*[@id='article_table']/div[2]/div[1]/table/tbody/tr/td[3]/div");
-	private final By headerFieldValue = By.xpath("//*[@id='article_table']/div[2]/div[1]/table/tbody/tr/td[3]/div");
 
 
 	public ProductDetailSearchPage clickOnFirstResult() {
@@ -549,7 +548,7 @@ public class ProductDetailSearchPage extends BasePage {
 	}
 	public String getDisplayedValue() {
 		WaitForMiliSec(2000);
-		return getStringValues(headerFieldValue,WaitLogic.VISIBLE,"Displayed value");
+		return getStringValues(productNoteFieldValue,WaitLogic.VISIBLE,"Displayed value");
 	}
 
 }

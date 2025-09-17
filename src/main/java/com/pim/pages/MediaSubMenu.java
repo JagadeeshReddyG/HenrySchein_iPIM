@@ -21,8 +21,8 @@ import com.pim.factories.ExplicitWaitFactory;
 
 public class MediaSubMenu extends BasePage{
 	ProductDetailSearchPage pdp = new ProductDetailSearchPage();
-	
-	
+
+
 	private final By dropdown = By.xpath("//div[@class='v-filterselect-button']");
 	private final By multiMediaDocument = By.xpath("//span[contains(text(),'Multimedia document')]");
 	private final String libraryNodes = "//div[contains(text(),'${variable}')]//span[@class='v-treetable-treespacer v-treetable-node-closed']";
@@ -46,31 +46,58 @@ public class MediaSubMenu extends BasePage{
 	private final String assetDivInUsageList = "//td[@class='v-table-cell-content v-table-cell-content-ArticleType_SupplierAltAid']/div[contains(text(),'${variable}')]";
 	private final By usageList = By.xpath("//div[text()='Usage list']");
 	private final By getItemAssetName = By.xpath("//div[contains(text(), '.jpg')]");
-	
-	
-	
+
+	//Media Tab
+	private final By fileNameTextField = By.xpath("(//span[contains(text(),'File-name')]/ancestor:: tr//td[@class='v-formlayout-contentcell']//div)[7]");
+    private final By shotTypeTextField = By.xpath("(//span[contains(text(),'Shot-Type')]/ancestor:: tr//td[@class='v-formlayout-contentcell']//div)[7]");
+    private final By serializationTextField = By.xpath("(//span[contains(text(),'Serialization')]/ancestor:: tr//td[@class='v-formlayout-contentcell']//div)[7]");
+	private final By imageInfoIcon = By.xpath("//button[contains(@class,'mediaOpenInfo')]");
+	private final By documentIdentificationNoInPopup = By.xpath("//*[contains(text(),'Document identifier')]//ancestor::tr//td[3]");
+	private final By resolutonValueInPopup = By.xpath("//*[contains(text(),'Resolution')]//ancestor::tr//td[3]");
+
+
+
+	public String getFileNameFromMediaTab() {
+		String fileNameValue = getStringValues(fileNameTextField, WaitLogic.VISIBLE, "get File Name Value");
+		return fileNameValue.trim();
+	}
+
+	public String getSerializationValueFromMediaTab() {
+		String serializationValue = getStringValues(serializationTextField, WaitLogic.VISIBLE, "get Serialization Value");
+		return serializationValue.trim();
+	}
+
+	public String getShotTypeValueFromMediaTab() {
+		String shotTypeValue = getStringValues(shotTypeTextField, WaitLogic.VISIBLE, "get Serialization Value");
+		return shotTypeValue.trim();
+	}
+
+	public void clickImageInfoIconFromMediaTab() {
+		click(imageInfoIcon, WaitLogic.CLICKABLE, "Info Icon");
+	}
+
 	public MediaSubMenu selectMultiMediaDocument() {
 		pdp.waitUntilBufferingIconDisappear();
 		click(dropdown, WaitLogic.CLICKABLE, "Media dropdown");
 		click(multiMediaDocument, WaitLogic.CLICKABLE, "multi media document");
 		return this;
 	}
-	
+
 	public MediaSubMenu clickMediaLibraryNodes(String nodes) {
 		click(getElementByReplaceText(libraryNodes, nodes), WaitLogic.CLICKABLE, nodes + " ");
 		return this;
 	}
-	
+
 	public MediaSubMenu clickSubCategory(String subcategory) {
 		click(getElementByReplaceText(subCategories, subcategory), WaitLogic.CLICKABLE, subcategory + " ");
 		return this;
 	}
-	
+
 	public MediaSubMenu expandDropdownIconOfGivenText(String dropdownText) {
 		click(getElementByReplaceText(dropdownIconOfGivenText, dropdownText), WaitLogic.CLICKABLE, dropdownText);
 		return this;
 	}
-	
+
 	public MediaSubMenu expandDropdownAfterCheckingFileType(String fileNameWithType) {
 		if(fileNameWithType.contains(".pdf")) {
 			click(getElementByReplaceText(dropdownIconOfGivenText, "Materials"), WaitLogic.CLICKABLE, "Materials");
@@ -80,45 +107,45 @@ public class MediaSubMenu extends BasePage{
 		}
 		return this;
 	}
-	
+
 	public MediaSubMenu clickOnGivenTextOptions(String text) {
 		click(getElementByReplaceText(givenTextOptions, text), WaitLogic.CLICKABLE, text);
 		return this;
 	}
-	
+
 	public MediaSubMenu clickOnFilterIcon() {
 		pdp.waitUntilBufferingIconDisappear();
 		moveToElementAndClick(filterIcon, "filterIcon");
 		pdp.waitUntilBufferingIconDisappear();
 		return this;
 	}
-	
+
 	public MediaSubMenu closeFilterIcon() {
 		BasePage.WaitForMiliSec(1000);
 		moveToElementAndClick(closeFilterIcon, "filterIcon");
 		BasePage.WaitForMiliSec(1000);
 		return this;
 	}
-	
+
 	public MediaSubMenu passTextOnFilterByTextfield(String text) {
 		click(filterByTextfield, WaitLogic.CLICKABLE, "filterByTextfield");
 		sendKeys(filterByTextfield, text, WaitLogic.CLICKABLE, "filterIcon");
 		return this;
 	}
-	
+
 	public MediaSubMenu clickOnFilterByFilterButton() {
 		click(filterByFilterButton, WaitLogic.CLICKABLE, "filterByFilterButton");
 		pdp.waitUntilBufferingIconDisappear();
 		return this;
 	}
-	
+
 	public MediaSubMenu clickFirstItem() {
 		BasePage.WaitForMiliSec(10000);
 		click(firstImageDiv, WaitLogic.CLICKABLE, "First Image");
 		BasePage.WaitForMiliSec(1000);
 		return this;
 	}
-	
+
 	public MediaSubMenu clickOnDownloadButtonOnGivenImage(String imageName) {
 		moveToElementAndClick(getElementByReplaceText(givenImageDivision, imageName), imageName);
 		moveToElementAndClick(getElementByReplaceText(downloadIconOnGivenImage, imageName), "downloadIconOnGivenImage");
@@ -126,7 +153,7 @@ public class MediaSubMenu extends BasePage{
 
 		return this;
 	}
-	
+
 	public MediaSubMenu clickFirstItemInUsageList() {
 //		while(isVisible(firstImageInUsageList, "image status is Ready", 2)) {
 		click(firstImageInUsageList, WaitLogic.CLICKABLE, "firstImageInUsageList");
@@ -134,46 +161,46 @@ public class MediaSubMenu extends BasePage{
 //		}
 		return this;
 	}
-	
+
 	public MediaSubMenu clickOnGivenAssetInUsageList(String assetNum) {
 		click(getElementByReplaceText(assetDivInUsageList, assetNum), WaitLogic.CLICKABLE, "firstImageInUsageList");
 		BasePage.WaitForMiliSec(1000);
 		return this;
 	}
-	
-	
+
+
 	public MediaSubMenu deleteAllItemsInUsageList() {
 		click(firstImageInUsageList, WaitLogic.CLICKABLE, "firstImageInUsageList");
 		BasePage.WaitForMiliSec(1000);
 		return this;
 	}
-	
+
 	public MediaSubMenu clickDeleteIcon() {
 		click(imageDeleteIcon, WaitLogic.CLICKABLE, "imageDeleteIcon");
 		BasePage.WaitForMiliSec(1000);
 		return this;
 	}
-	
+
 	public MediaSubMenu clickDeleteConfirmationIcon() {
 		click(deleteConfirmationIcon, WaitLogic.CLICKABLE, "deleteConfirmationIcon");
 		pdp.waitUntilBufferingIconDisappear();
 		BasePage.WaitForMiliSec(2000);
 		return this;
 	}
-	
+
 	public MediaSubMenu clickOnUsageList(){
 		click(usageList, WaitLogic.CLICKABLE, "usageList");
 		BasePage.WaitForMiliSec(1000);
 		return this;
 	}
-	
+
 	public MediaSubMenu clickNoOnDeleteConfirmationIcon() {
 		click(noOnDeleteConfirmationIcon, WaitLogic.CLICKABLE, "noOnDeleteConfirmationIcon");
 		pdp.waitUntilBufferingIconDisappear();
 		BasePage.WaitForMiliSec(2000);
 		return this;
 	}
-	
+
 	public MediaSubMenu clickPopCloseIcon() {
 		click(closeIcon, WaitLogic.CLICKABLE, "closeIcon");
 		pdp.waitUntilBufferingIconDisappear();
@@ -186,20 +213,20 @@ public class MediaSubMenu extends BasePage{
 		BasePage.WaitForMiliSec(2000);
 		return this;
 	}
-	
-	
-	
+
+
+
 //	public ArrayList<String> getAssetNamesInUsageList() {
 //		ArrayList<String> assetList = new ArrayList<String>();
 //		List<WebElement> allAssetList = DriverManager.getDriver().findElements(allAssetsNumberInUsageList);
-//		
+//
 //		for(int i=0; i<allAssetList.size(); i++) {
 //			String assetNum = allAssetList.get(i).getText();
 //			assetList.add(assetNum);
 //		}
 //		return assetList;
 //	}
-	
+
 	public ArrayList<String> getAssetNamesInUsageList() {
 	    ArrayList<String> assetList = new ArrayList<>();
 
@@ -208,7 +235,7 @@ public class MediaSubMenu extends BasePage{
 	    	ExplicitWaitFactory.performExplicitWait(WaitLogic.VISIBLE, allAssetsNumberInUsageList);
 
 	        List<WebElement> allAssetElements = DriverManager.getDriver().findElements(allAssetsNumberInUsageList);
-	        
+
 	        for (WebElement element : allAssetElements) {
 	            String assetNum = element.getText().trim();
 	            if (!assetNum.isEmpty()) {
@@ -223,14 +250,14 @@ public class MediaSubMenu extends BasePage{
 	    return assetList;
 	}
 
-	
-	
+
+
 	public String getAssetName() {
 		WaitForMiliSec(3000);
 		String assetName = getStringValues(getItemAssetName, WaitLogic.VISIBLE, "get assetName");
 		return assetName;
 	}
-	
+
 	public String ExtractAssetItemNumber() {
         String assetName = getAssetName();
 
@@ -241,7 +268,7 @@ public class MediaSubMenu extends BasePage{
             throw new IllegalArgumentException("Invalid asset name format: " + assetName);
         }
     }
-	
+
 	// MediaSubMenu.java
 
 	public MediaSubMenu deleteAsset(String asset, String docId) {
@@ -277,5 +304,5 @@ public class MediaSubMenu extends BasePage{
 	    return this;
 	}
 
-	
+
 }
