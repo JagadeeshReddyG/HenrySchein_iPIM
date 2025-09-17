@@ -19,6 +19,7 @@ public class FieldSelectionPage extends BasePage {
 	public String valueSearchxpathfromDropdown = "//span[contains(text(),'${variable}')]";
 
     private final By productNotesLanguageTextbox= By.xpath("//span[contains(text(),'productNoteslanguage')]/../..//input[@class='v-filterselect-input']");
+    private final By AlternateNumberCustomer = By.xpath("//*[@id='SelectFieldsDialog.LogicalKey.%logical-key.ArticleSalesType.LK.Buyer.name']/input");
     private final By fieldSelectionItems = By.xpath("//div[@class='v-label v-widget hpmw-select-fields-table-label v-label-hpmw-select-fields-table-label v-has-width v-has-height']");
     private final By fieldDeletebtn = By.xpath("(//td/div[@class='v-table-cell-wrapper']/div[@class='v-button v-widget hpmw-select-fields-delete-btn v-button-hpmw-select-fields-delete-btn'])[2]");
     private final By gTIN_Field = By.xpath("(//div[@class='v-tree-node-caption']//span[normalize-space(text())='GTIN'])[position()=1]");
@@ -73,6 +74,18 @@ public class FieldSelectionPage extends BasePage {
 
     public FieldSelectionPage enterProductNotesLanguageValue(String fieldname){
         sendKeys(productNotesLanguageTextbox, fieldname, WaitLogic.VISIBLE, "Product Note language text box");
+        WaitForMiliSec(2000);
+        click(getElementByReplaceText(valueSearchxpathfromDropdown, fieldname), WaitLogic.CLICKABLE, fieldname);
+        WaitForMiliSec(5000);
+        return this;
+
+    }
+
+    public FieldSelectionPage enterCustomerName(String fieldname){
+        WebElement element = DriverManager.getDriver().findElement(AlternateNumberCustomer);
+        clearWithDelete(element);
+        WaitForMiliSec(2000);
+        sendKeys(AlternateNumberCustomer, fieldname, WaitLogic.VISIBLE, "Customer text box");
         WaitForMiliSec(2000);
         click(getElementByReplaceText(valueSearchxpathfromDropdown, fieldname), WaitLogic.CLICKABLE, fieldname);
         WaitForMiliSec(5000);

@@ -88,5 +88,15 @@ public class ApplicationUtils {
 		String desc = jde + " " + DateandTimeUtils.getTodaysDate();
 		return desc;
 	}
+	public static String getFormattedGlobalMessageId(String text) {
+		if (text == null || text.isEmpty()) {
+			return "";
+		}
+		// Split on the arrow symbol ➨ and take the last part
+		String[] parts = text.split("➨");
+		String lastPart = parts[parts.length - 1].trim();
+
+		return lastPart; // will give MEDICAL_OTP
+	}
 
 }
